@@ -1,0 +1,1 @@
+geth --datadir data --networkid 20140628 --rpc --rpccorsdomain "*" --nodiscover --port 16333 --rpcport 8546 console
