@@ -1,4 +1,4 @@
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 import * as React from 'react';
 import { IndexLink } from 'react-router';
 import './Home.css'
@@ -21,13 +21,15 @@ class Home extends React.Component<> {
             style={{lineHeight: '64px'}}
           >
             <Menu.Item key="1">
-              <IndexLink to="/searchBlock">
-                <span >区块查询</span>
+              <IndexLink to="/listBlockTx">
+                <Icon type="block" />
+                <span >数据列表</span>
               </IndexLink>
             </Menu.Item>
             <Menu.Item key="2">
-              <IndexLink to="/searchTransaction">
-                <span >交易查询</span>
+              <IndexLink to="/searchBlockTx">
+                <Icon type="search" />
+                <span >区块查询</span>
               </IndexLink>
             </Menu.Item>
             <Menu.Item key="3">
@@ -45,7 +47,7 @@ class Home extends React.Component<> {
           </div>
         </Content>
         <Footer style={{textAlign: 'center'}}>
-          Blockchain Explorer ©2018 Created by JING
+          Blockchain Explorer ©2018 Created by 15th Group
         </Footer>
       </Layout>
     );
