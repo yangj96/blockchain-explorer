@@ -30,6 +30,11 @@ class Home extends React.Component<> {
                 <span >交易查询</span>
               </IndexLink>
             </Menu.Item>
+            <Menu.Item key="3">
+              <IndexLink to="/statistic">
+                <span >数据统计</span>
+              </IndexLink>
+            </Menu.Item>
           </Menu>
         </Header>
         <Content style={{padding: '0 50px'}}>

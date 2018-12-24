@@ -17,7 +17,7 @@ class SearchBlock extends React.Component<> {
     if (typeof web3 !== 'undefined'){
       web3 = new Web3(web3.currentProvider);
     } else {
-      web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
+      web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8546'));
     }
     let blockNumber = 0;
     await web3.eth.getBlockNumber()
