@@ -34,6 +34,7 @@ class Home extends React.Component<> {
             </Menu.Item>
             <Menu.Item key="3">
               <IndexLink to="/statistic">
+                <Icon type="bar-chart" />
                 <span >数据统计</span>
               </IndexLink>
             </Menu.Item>

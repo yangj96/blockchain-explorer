@@ -1,9 +1,9 @@
-import { Input, Table } from 'antd';
+import { Card, Col, Row } from 'antd';
 import * as React from 'react';
 import { ResponsiveOrdinalFrame } from 'semiotic';
 import { OrdinalFrame } from 'semiotic';
-import Web3 from 'web3';
 import { stringToArrayFn } from 'semiotic/lib/data/dataFunctions';
+import Web3 from 'web3';
 
 let web3;
 
@@ -34,7 +34,6 @@ class Statistic extends React.Component<> {
 
   async getTransactions(blockNumber) {
     const transctionsByMin = this.state.transctionsByMin.slice();
-    let currentBlockObject;
     let currentBlockNumber = blockNumber;
     let tableLength = Math.ceil(blockNumber/60);
     for (let i = 0,j = 1; i < tableLength & j <= currentBlockNumber; i++) {
@@ -54,7 +53,7 @@ class Statistic extends React.Component<> {
   }
 
   async getHashRate(){
-    let colorShop = ["#FF4040","#8B1A1A","#4169E1","#BF3EFF","#7FFF00","#8B1A1A","#E066FF","#EEEE00"];
+    let colorShop = ["#FADAD8","#ABD0CE","#CBA6C3","#AAABD3","#8EC0E4","#9B8281","#f6ea8c","#353866"];
     const hashRate = this.state.hashRate.slice();
     let tmp_rate = [];
     for(let port = 8546;port < 8550;port++){
@@ -88,36 +87,50 @@ class Statistic extends React.Component<> {
 
     return(
       <div>
-      <h3>最近几分钟的交易量统计</h3>
-      <ResponsiveOrdinalFrame   
-        size = {[500,300]}
-        responsiveWidth = { true }
-        margin = {{top : 10, bottom: 20, left: 40, right: 20}}
-        data={[{time:"-6",transactionNum:4},{time:"-5",transactionNum:4},{time:"-4",transactionNum:3},{time:"-3",transactionNum:3},{time:"-2",transactionNum:2},{time:"-1",transactionNum:1}]}
-        rAccessor={"transactionNum"}
-        oAccessor={"time"}
-        style={{ fill: "#00a2ce", stroke: "white" }}
-        type={"bar"}
-        oLabel={true}
-        oPadding={10}
-        pixelColumnWidth={40}
-        axis={{ orient: "left" }}
-      />
-      <h3>算力分布</h3>
-      <OrdinalFrame
-            size={[300, 300]}
-            data={hashRate}
-            oAccessor={"node"}
-            dynamicColumnWidth={"rate"}
-            style={d => ({ fill: d.color, stroke: "white" })}
-            type={{ type: "bar", innerRadius: 50 }}
-            projection="radial"
-            margin={{ top: 50, bottom: 50, left: 50, right: 50 }}
-            oPadding={1}
-            tooltipContent="pie"
-            oLabel={true}
-            hoverAnnotation={true}
-          />
+        <div style={{padding: '30px' }}>
+          <Row gutter={16}>
+            <Col className="gutter-row" span={12}>
+              <div className="gutter-box">
+                <Card title="最近几分钟的交易量统计" bordered={false} style={{ width: 300 }}>
+                  <ResponsiveOrdinalFrame
+                    size = {[500,300]}
+                    responsiveWidth = { true }
+                    margin = {{top : 10, bottom: 20, left: 40, right: 20}}
+                    data={[{time:"-6",transactionNum:4},{time:"-5",transactionNum:4},{time:"-4",transactionNum:3},{time:"-3",transactionNum:3},{time:"-2",transactionNum:2},{time:"-1",transactionNum:1}]}
+                    rAccessor={"transactionNum"}
+                    oAccessor={"time"}
+                    style={{ fill: "#6AAFE6", stroke: "#6AAFE6" }}
+                    type={"bar"}
+                    oLabel={true}
+                    oPadding={10}
+                    pixelColumnWidth={40}
+                    axis={{ orient: "left" }}
+                  />
+                </Card>
+              </div>
+            </Col>
+            <Col className="gutter-row" span={12}>
+              <div className="gutter-box">
+                <Card title="算力分布" bordered={false} style={{ width: 300 }}>
+                  <OrdinalFrame
+                    size={[300, 300]}
+                    data={hashRate}
+                    oAccessor={"node"}
+                    dynamicColumnWidth={"rate"}
+                    style={d => ({ fill: d.color, stroke: "white" })}
+                    type={{ type: "bar", innerRadius: 50 }}
+                    projection="radial"
+                    margin={{ top: 50, bottom: 50, left: 50, right: 50 }}
+                    oPadding={1}
+                    tooltipContent="pie"
+                    oLabel={true}
+                    hoverAnnotation={true}
+                  />
+                </Card>
+              </div>
+            </Col>
+          </Row>
+        </div>
       </div>
       
     )

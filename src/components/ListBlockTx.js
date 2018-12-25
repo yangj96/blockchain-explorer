@@ -82,7 +82,7 @@ class ListBlockTx extends React.Component<> {
               const detail = [];
               detail.push(record);
               return (
-              <Table dataSource={detail}>
+              <Table dataSource={detail} pagination={false}>
                 <Table.Column dataIndex="gas" title="Gas"/>
                 <Table.Column dataIndex="gasPrice" title="GasPrice"/>
                 <Table.Column dataIndex="nonce" title="Nonce"/>
