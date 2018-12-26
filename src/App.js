@@ -12,6 +12,7 @@ class App extends Component {
     return (
       <Router history={browserHistory} >
         <Route path="/" component={Home}>
+          <IndexRoute component={ListBlockTx}/>
           <Route path="listBlockTx" component={ListBlockTx}/>
           <Route path="listAllBlocks" component={ListAllBlocks}/>
           <Route path="searchBlockTx" component={SearchBlockTx}/>
